@@ -1,0 +1,30 @@
+version: "3.6"
+services:
+
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    ports:
+        - "16686:16686"
+        - "14268"
+        - "14250"
+
+  opentracing-app-b:
+     build: opentracing-app-b
+     ports:
+      - 8082:8081
+
+  opentracing-app-a:
+     build: opentracing-app-a
+     ports:
+      - 8080:8080
+
+  opentelemetry-app-b:
+     build: opentelemetry-app-b
+     ports:
+      - 9082:9082
+
+  opentelemetry-app-a:
+     build: opentelemetry-app-a
+     ports:
+      - 9081:9081
